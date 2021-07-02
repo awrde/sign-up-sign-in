@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const User = require("./models/user");
 
 mongoose.connect("mongodb://localhost/shopping-demo", {
@@ -37,6 +38,24 @@ router.post("/users", async (req, res) => {
   await user.save()
 
   res.status(201).send({})
+})
+
+router.post("/auth", async (req, res) => {
+  const { email, password } = req.body
+
+  const user = await User.findOne({ email, password }).exec()
+
+  if (!user) {
+    res.status(400).send({
+      errorMessage: '이메일 또는 패스워드가 잘못됐습니다.'
+    })
+    return
+  }
+
+  const token = jwt.sign({ userId: user.userId }, "my-secret-key")
+  res.send({
+    token
+  })
 })
 
 app.use("/api", express.urlencoded({ extended: false }), router);
