@@ -1,17 +1,29 @@
 {
   "name": "nodejs-plus-shopping",
   "version": "1.0.0",
-  "description": "",
+  "description": "로그인 회원가입 API 만들기",
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
+    "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.0"
+    "mongoose": "^5.13.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.9",
+    "sequelize": "^6.6.4"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awrde/sign-up-sign-in.git"
+  },
+  "bugs": {
+    "url": "https://github.com/awrde/sign-up-sign-in/issues"
+  },
+  "homepage": "https://github.com/awrde/sign-up-sign-in#readme"
 }
